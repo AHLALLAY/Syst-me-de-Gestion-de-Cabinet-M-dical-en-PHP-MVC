@@ -11,22 +11,24 @@
 <body class="bg-green-50 min-h-screen p-8">
     <?php include_once '../layouts/header.php' ?>
     <main class="max-w-7xl mx-auto">
-        <form action="">
-            <div class="p-8 rounded-full shadow-md border border-green-100">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="p-6 bg-white rounded-lg shadow-md border border-green-100 hover:shadow-lg hover:border-cyan-500 transition-all cursor-pointer">
-                        <div class="flex items-center justify-center h-full">
-                            <span class="text-xl font-medium text-green-900 hover:text-cyan-600">Display My Appointments</span>
-                        </div>
+        <div class="p-8 rounded-full shadow-md border border-green-100">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="p-6 bg-white rounded-lg shadow-md border border-green-100 hover:shadow-lg hover:border-cyan-500 transition-all cursor-pointer">
+                    <div class="flex items-center justify-center h-full">
+                        <form action="">
+                            <button class="text-xl font-medium text-green-900 hover:text-cyan-600">Display My Appointments</button>
+                        </form>
                     </div>
-                    <div class="p-6 bg-white rounded-lg shadow-md border border-green-100 hover:shadow-lg hover:border-cyan-500 transition-all cursor-pointer">
-                        <div class="flex items-center justify-center h-full">
-                            <span class="text-xl font-medium text-green-900 hover:text-cyan-600">Display Doctors</span>
-                        </div>
+                </div>
+                <div class="p-6 bg-white rounded-lg shadow-md border border-green-100 hover:shadow-lg hover:border-cyan-500 transition-all cursor-pointer">
+                    <div class="flex items-center justify-center h-full">
+                        <form action="">
+                            <button class="text-xl font-medium text-green-900 hover:text-cyan-600">Display Doctors</button>
+                        </form>
                     </div>
                 </div>
             </div>
-        </form>
+        </div>
     </main>
 </body>
 
