@@ -43,11 +43,12 @@ class Appointment
         $db = Database::getInstance();
         $conn = $db->getConnection();
 
-        $stmt = $conn->prepare("SELECT a.app_date, u.f_name, u.l_name
-                                FROM appointment a 
-                                JOIN users u ON a.patient = u.user_id
-                                WHERE doctor = :doctor");
-        $stmt->bindValue(':doctor', $doctorId, PDO::PARAM_INT);
+        $stmt = $conn->prepare("SELECT a.created_at, u.user_id,
+                                        concat(u.f_name,' ', u.l_name) as pateint,
+                                        FROM appointment a
+                                        JOIN users u ON a.patient = u.user_id
+                                        WHERE u.user_id = :id");
+        $stmt->bindValue(':id', $doctorId, PDO::PARAM_INT);
         $stmt->execute();
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
