@@ -1,4 +1,11 @@
+<?php
+require_once '../../models/Appointment.php';
+session_start();
 
+$appointments = new Appointment();
+$appointment = $appointments->getAppointmentsByPatient($_SESSION['id']);
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -42,16 +49,16 @@
                         </button>
                     </form>
 
-                    <form action="../../controllers/LogoutProcess.php" method="post"
+                    <form action="../../controllers/LogoutProcess.php" method="post">
                         <button name="logout_btn" type="submit"
-                        class="px-6 py-2.5 bg-gradient-to-r from-red-500 to-red-600 text-white font-medium rounded-full
+                            class="px-6 py-2.5 bg-gradient-to-r from-red-500 to-red-600 text-white font-medium rounded-full
       hover:from-red-600 hover:to-red-700 focus:ring-4 focus:ring-red-500/50
       transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-red-500/30
       flex items-center space-x-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd" />
-                        </svg>
-                        <span>Déconnexion</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Déconnexion</span>
                         </button>
                     </form>
                 </div>
@@ -64,28 +71,29 @@
         <div class="bg-white/10 backdrop-blur-md rounded-xl shadow-2xl p-6">
             <h2 class="text-2xl font-bold text-white mb-6">Médecins Disponibles</h2>
 
-            <!-- Tableau des médecins -->
-            <div class="overflow-x-auto">
-                <table class="w-full">
+            <!-- Tableau des médecins with adjusted dimensions -->
+            <div class="overflow-x-auto rounded-lg">
+                <table class="w-full min-w-[768px]">
                     <thead>
                         <tr class="text-purple-100 border-b border-purple-300/20">
-                            <th class="px-6 py-3 text-left">get at<th>
-                            <th class="px-6 py-3 text-left">Doctor</th>
-                            <th class="px-6 py-3 text-left">speciality</th>
-                            <th class="px-6 py-3 text-left">Action</th>
+                            <th class="w-1/4 px-8 py-4 text-left font-semibold">Date</th>
+                            <th class="w-1/4 px-8 py-4 text-left font-semibold">Doctor</th>
+                            <th class="w-1/4 px-8 py-4 text-left font-semibold">Speciality</th>
+                            <th class="w-1/4 px-8 py-4 text-left font-semibold">Action</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="divide-y divide-purple-300/20">
                         <?php foreach ($appointment as $app): ?>
-                            <tr class="text-white border-b border-purple-300/20">
-                                <td class="px-6 py-4"><?= $app['f_name'] . ' ' . $app['l_name'] ?></td>
-                                <td class="px-6 py-4"><?= $app['speciality'] ?></td>
-                                <td class="px-6 py-4"><?= $app['avaliable'] ?></td>
-                                <td class="px-6 py-4">
+                            <tr class="text-white hover:bg-white/5 transition-colors">
+                                <td class="px-8 py-6"><?= $app['created_at'] ?></td>
+                                <td class="px-8 py-6"><?= $app['doctor'] ?></td>
+                                <td class="px-8 py-6"><?= $app['specialite'] ?></td>
+                                <td class="px-8 py-6">
                                     <form method="post">
-                                        <input type="hidden" name="doctor_id" value="<?= $app['user_id'] ?>">
-                                        <input type="hidden" name="spe" value="<?= $app['speciality'] ?>">
-                                        <button type="submit" name="cancelApp" class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition duration-200">
+                                        <input type="hidden" name="doctor_id" value="<?= $app['id'] ?>">
+                                        <button type="submit" name="cancelApp" 
+                                            class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 
+                                            transition duration-200 focus:ring-4 focus:ring-red-500/50">
                                             Annuler RDV
                                         </button>
                                     </form>
