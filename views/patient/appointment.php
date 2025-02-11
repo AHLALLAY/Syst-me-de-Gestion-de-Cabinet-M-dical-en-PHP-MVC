@@ -1,10 +1,5 @@
 <?php
-require_once '../../models/Appointment.php';
-session_start();
-
-$appointments = new Appointment();
-$appointment = $appointments->getAppointmentsByPatient($_SESSION['id']);
-
+require_once '../../controllers/getAppointment.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -23,19 +18,6 @@ $appointment = $appointments->getAppointmentsByPatient($_SESSION['id']);
             <div class="flex items-center justify-between h-16">
                 <h1 class="text-2xl font-bold text-white">Cabinet Médical</h1>
                 <div class="flex gap-4">
-                    <form method="post">
-                        <button name="appointment" type="submit"
-                            class="px-6 py-2.5 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-medium rounded-full 
-      hover:from-blue-600 hover:to-blue-700 focus:ring-4 focus:ring-blue-500/50 
-      transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-blue-500/30
-      flex items-center space-x-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
-                            </svg>
-                            <span>Appointment</span>
-                        </button>
-                    </form>
-
                     <form method="post">
                         <button name="docs" type="submit"
                             class="px-6 py-2.5 bg-gradient-to-r from-purple-500 to-purple-600 text-white font-medium rounded-full
@@ -69,7 +51,7 @@ $appointment = $appointments->getAppointmentsByPatient($_SESSION['id']);
     <!-- Contenu principal -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div class="bg-white/10 backdrop-blur-md rounded-xl shadow-2xl p-6">
-            <h2 class="text-2xl font-bold text-white mb-6">Médecins Disponibles</h2>
+            <h2 class="text-2xl font-bold text-white mb-6">Mes Rendez-vous</h2>
 
             <!-- Tableau des médecins with adjusted dimensions -->
             <div class="overflow-x-auto rounded-lg">
