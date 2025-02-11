@@ -1,5 +1,5 @@
 <?php
-require_once '../../controllers/getAppointment.php';
+require_once '../../controllers/getAppointmentsByPatient.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -11,7 +11,7 @@ require_once '../../controllers/getAppointment.php';
     <title>Liste des Rendez-vous</title>
 </head>
 
-<body class="min-h-screen bg-gradient-to-br from-purple-900 to-blue-900">
+<body class="min-h-screen bg-gradient-to-br from-purple-900 to-blue-900 select-none">
     <!-- Header -->
     <header class="bg-white/10 backdrop-blur-md shadow-lg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
