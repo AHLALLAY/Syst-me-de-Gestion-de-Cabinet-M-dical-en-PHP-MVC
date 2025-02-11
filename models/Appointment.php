@@ -32,7 +32,8 @@ class Appointment
                                         FROM appointment a
                                         JOIN users u1 ON a.patient = u1.user_id
                                         JOIN users u2 ON a.doctor = u2.user_id
-                                        WHERE u1.user_id = :id");
+                                        WHERE u1.user_id = :id
+                                        ORDER BY a.created_at DESC");
         $stmt->bindValue(':id', $patientId, PDO::PARAM_INT);
         $stmt->execute();
 
@@ -43,11 +44,13 @@ class Appointment
         $db = Database::getInstance();
         $conn = $db->getConnection();
 
-        $stmt = $conn->prepare("SELECT a.created_at, u.user_id,
-                                        concat(u.f_name,' ', u.l_name) as pateint,
-                                        FROM appointment a
-                                        JOIN users u ON a.patient = u.user_id
-                                        WHERE u.user_id = :id");
+        $stmt = $conn->prepare("SELECT a.id, a.created_at,
+     	                        concat(u1.f_name,' ', u1.l_name) as patient
+                                FROM appointment a
+                                JOIN users u1 ON a.patient = u1.user_id
+                                JOIN users u2 ON a.doctor = u2.user_id
+                                where u2.user_id = :id
+                                ORDER BY a.created_at DESC");
         $stmt->bindValue(':id', $doctorId, PDO::PARAM_INT);
         $stmt->execute();
 
