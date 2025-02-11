@@ -32,7 +32,7 @@ require_once '../../controllers/getDoctors.php';
                             <span>Appointment</span>
                         </button>
                     </form>
-                    <form action="../../controllers/LogoutProcess.php" method="post"
+                    <form action="../../controllers/LogoutProcess.php" method="post">
                         <button name="logout_btn" type="submit"
                         class="px-6 py-2.5 bg-gradient-to-r from-red-500 to-red-600 text-white font-medium rounded-full
       hover:from-red-600 hover:to-red-700 focus:ring-4 focus:ring-red-500/50
