@@ -12,7 +12,7 @@
     <title>Cabinet Médical</title>
 </head>
 
-<body class="min-h-screen bg-gradient-to-br from-purple-900 to-blue-900 flex items-center justify-center p-4">
+<body class="min-h-screen bg-gradient-to-br from-purple-900 to-blue-900 flex items-center justify-center p-4 select-none">
     <div class="w-full max-w-md">
         <!-- En-tête avec logo -->
         <div class="text-center mb-8">

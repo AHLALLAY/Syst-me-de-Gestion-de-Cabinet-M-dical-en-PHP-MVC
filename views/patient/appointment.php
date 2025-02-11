@@ -18,7 +18,7 @@ require_once '../../controllers/getAppointment.php';
             <div class="flex items-center justify-between h-16">
                 <h1 class="text-2xl font-bold text-white">Cabinet Médical</h1>
                 <div class="flex gap-4">
-                    <form method="post">
+                    <form action="dashboard.php" method="post">
                         <button name="docs" type="submit"
                             class="px-6 py-2.5 bg-gradient-to-r from-purple-500 to-purple-600 text-white font-medium rounded-full
       hover:from-purple-600 hover:to-purple-700 focus:ring-4 focus:ring-purple-500/50
