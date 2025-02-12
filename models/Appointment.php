@@ -1,11 +1,9 @@
 <?php
 require_once 'Database.php';
 
-class Appointment
-{
+class Appointment{
 
-    public function addAppointment($patient, $doctor, $specialite)
-    {
+    public function addAppointment($patient, $doctor, $specialite){
         $db = Database::getInstance();
         $conn = $db->getConnection();
 
@@ -21,8 +19,7 @@ class Appointment
         }
     }
 
-    public function getAppointmentsByPatient($patientId)
-    {
+    public function getAppointmentsByPatient($patientId){
         $db = Database::getInstance();
         $conn = $db->getConnection();
 
@@ -55,5 +52,14 @@ class Appointment
         $stmt->execute();
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function deleteAppointment($appId){
+        $db = Database::getInstance();
+        $conn = $db->getConnection();
+
+        $stmt = $conn->prepare("DELETE FROM appointment WHERE id = :id");
+        $stmt->bindParam(':id', $appId);
+        $stmt->execute();
     }
 }
