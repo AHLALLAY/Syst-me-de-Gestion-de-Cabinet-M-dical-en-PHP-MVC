@@ -13,6 +13,8 @@ if (isset($_POST['register_submit'])) {
 
     if ($res) {
         $success = true;
+        header('location: /');
+        exit;
     }
 }
 ?>
