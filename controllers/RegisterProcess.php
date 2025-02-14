@@ -1,5 +1,5 @@
 <?php
-require_once './models/User.php';
+require_once '../models/User.php';
 
 if (isset($_POST['register_submit'])) {
     $f_name     = $_POST['f_name'];
